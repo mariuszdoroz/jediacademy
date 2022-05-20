@@ -1,17 +1,26 @@
 package pl.jediacademy.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.Date;
+import pl.jediacademy.model.User;
+
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 public class StartController {
 
-    @RequestMapping("/w")
-    public String welcome(ModelMap map) {
-        map.put("currentDate", new Date());
+    @GetMapping("/")
+    public String home(){
         return "welcome";
     }
+
+    @GetMapping("/register")
+    public String registerForm(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
+    }
+
+
 }

@@ -9,6 +9,6 @@
 </head>
 
 <body>
-Welcome Jedi!
+Achtung! Error page!
 </body>
 </html>
