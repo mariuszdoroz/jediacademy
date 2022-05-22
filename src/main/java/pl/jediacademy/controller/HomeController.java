@@ -9,7 +9,7 @@ import pl.jediacademy.model.User;
 
 @Controller
 @RequestMapping
-public class StartController {
+public class HomeController {
 
     @GetMapping("/")
     public String home(){
@@ -22,5 +22,8 @@ public class StartController {
         return "register";
     }
 
-
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
