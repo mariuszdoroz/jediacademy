@@ -25,4 +25,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>
+<br>
+<%@ include file="menu.jsp" %>
 </body></html>

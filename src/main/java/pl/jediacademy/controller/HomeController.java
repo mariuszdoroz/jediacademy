@@ -5,14 +5,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.jediacademy.model.User;
+import pl.jediacademy.repository.UserRepository;
+
+import java.security.Principal;
 
 
 @Controller
 @RequestMapping
 public class HomeController {
 
+    private UserRepository userRepository;
+
+    public HomeController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @GetMapping("/")
-    public String home(){
+    public String home(Model model, Principal principal){
+        String name = principal.getName();
+        model.addAttribute("user", userRepository.findByUsername(name));
         return "welcome";
     }
 

@@ -3,7 +3,6 @@ package pl.jediacademy.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.awt.print.Book;
 import java.util.List;
 
 @Data
