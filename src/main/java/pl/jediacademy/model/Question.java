@@ -10,15 +10,23 @@ import javax.persistence.*;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private String goodanswer;
-    private String img;
+    private String question;
+    private String answer;
+    private String imglink;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Quiz quiz;
 
+    public Question(String question, String answer, Quiz quiz) {
+        this.question = question;
+        this.answer = answer;
+        this.quiz = quiz;
+    }
+
+    public Question() {
+
+    }
 }

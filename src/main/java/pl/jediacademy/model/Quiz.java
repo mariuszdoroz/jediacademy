@@ -11,15 +11,20 @@ import java.util.List;
 public class Quiz {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String quizname;
 
-    @OneToMany(mappedBy = "quiz")
-    private List<Question> questions;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    @OneToMany(mappedBy = "quiz")
-    private List<Comment> comments;
+    public Quiz(String quizname, Subject subject) {
+        this.quizname = quizname;
+        this.subject = subject;
+    }
 
+    public Quiz() {
 
+    }
 }
