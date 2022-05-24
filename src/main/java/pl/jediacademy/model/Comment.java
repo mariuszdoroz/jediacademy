@@ -15,4 +15,12 @@ public class Comment {
     private Long id;
     private String content;
     private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
 }

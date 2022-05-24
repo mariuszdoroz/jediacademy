@@ -13,4 +13,12 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+
+    public Subject(String name) {
+        this.name = name;
+    }
+
+    public Subject() {
+
+    }
 }

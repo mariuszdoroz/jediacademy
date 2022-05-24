@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.jediacademy.model.Role;
 import pl.jediacademy.model.User;
+import pl.jediacademy.repository.RoleRepository;
 import pl.jediacademy.repository.UserRepository;
 
 import java.security.Principal;
@@ -15,8 +17,7 @@ import java.security.Principal;
 public class HomeController {
 
     private UserRepository userRepository;
-
-    public HomeController(UserRepository userRepository) {
+    public HomeController(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
     }
 

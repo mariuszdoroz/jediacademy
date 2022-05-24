@@ -3,7 +3,9 @@ package pl.jediacademy.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,4 +18,5 @@ public class Challenge {
     private String name;
     private Date startdate;
     private Date enddate;
+
 }

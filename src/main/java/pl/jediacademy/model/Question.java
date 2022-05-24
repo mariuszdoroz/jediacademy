@@ -17,4 +17,8 @@ public class Question {
     private String goodanswer;
     private String img;
 
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Quiz quiz;
+
 }
