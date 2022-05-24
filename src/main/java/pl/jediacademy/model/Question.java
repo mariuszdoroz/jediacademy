@@ -13,8 +13,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private String question;
-    private String answer;
+    private String description;
+    private String goodanswer;
     private String img;
 
 }
