@@ -11,7 +11,7 @@
 </head>
 
 <body
-        <%@ include file="menu.jsp" %>
+<%@ include file="menu.jsp" %>
 <br>
 Welcome Jedi!
 <br>
