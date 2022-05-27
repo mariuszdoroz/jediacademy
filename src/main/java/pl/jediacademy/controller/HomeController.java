@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.jediacademy.model.Role;
 import pl.jediacademy.model.User;
 import pl.jediacademy.repository.RoleRepository;
 import pl.jediacademy.repository.UserRepository;

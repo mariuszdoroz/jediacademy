@@ -27,5 +27,5 @@ Learn:
 <a href="/dashboard/learn">learn</a>
 <br>
 Test:
-<a href="/dashboard/test">test</a>
+<a href="/dashboard/test?quizid=1">test</a>
 <br>
