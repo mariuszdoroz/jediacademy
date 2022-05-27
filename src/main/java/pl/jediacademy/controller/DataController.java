@@ -110,8 +110,9 @@ public class DataController {
         User admin = new User();
         admin.setUsername("admin");
         admin.setPassword("$2a$12$hlg1KLbR/C9jwpLFsZL.nOkpAk0FyAS08vDEluWF.j8tLBrORpk0e");
-        admin.setEmail("user@example.com");
+        admin.setEmail("admin@example.com");
         admin.setRole(roleRepository.findRoleByName("ADMIN"));
+        admin.setTier(tierRepository.findTierByTiername("PADAWAN"));
         userRepository.save(admin);
         //comment
         return "dashboard";

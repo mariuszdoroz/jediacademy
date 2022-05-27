@@ -17,7 +17,7 @@ public class Question {
     private String imglink;
 
     @ManyToOne
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
     public Question(String question, String answer, Quiz quiz) {
