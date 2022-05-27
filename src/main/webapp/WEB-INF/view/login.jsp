@@ -11,6 +11,8 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
 <body>
+<%@ include file="menu.jsp" %>
+<br>
 <div class="container">
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in to Jedi Academy!</h2>
@@ -26,5 +28,4 @@
     </form>
 </div>
 <br>
-<%@ include file="menu.jsp" %>
 </body></html>

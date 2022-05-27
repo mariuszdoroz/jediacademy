@@ -8,8 +8,9 @@
 </head>
 
 <body>
+<%@ include file="menu.jsp" %>
+<br>
 Join Academy!
 <br>
-<%@ include file="menu.jsp" %>
 </body>
 </html>

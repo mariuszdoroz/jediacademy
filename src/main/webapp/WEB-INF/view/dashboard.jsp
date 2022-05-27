@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<%@ include file="menu.jsp" %>
+<br>
 Welcome Jedi! It's your dashboard!
 <br>
 <sec:authorize access="isAuthenticated()">
@@ -19,6 +21,5 @@ Welcome Jedi! It's your dashboard!
     user role: <sec:authentication property="authorities"/>
 </sec:authorize>
 <br>
-<%@ include file="menu.jsp" %>
 </body>
 </html>

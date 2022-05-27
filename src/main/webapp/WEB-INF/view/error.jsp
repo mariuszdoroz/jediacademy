@@ -11,8 +11,9 @@
 </head>
 
 <body>
+<%@ include file="menu.jsp" %>
+<br>
 Achtung! Error page!
 <br>
-<%@ include file="menu.jsp" %>
 </body>
 </html>

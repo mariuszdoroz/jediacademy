@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<%@ include file="menu.jsp" %>
+<br>
 <table border="1">
     <thead>
     <th>question</th>

@@ -10,7 +10,9 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
 
-<body>
+<body
+        <%@ include file="menu.jsp" %>
+<br>
 Welcome Jedi!
 <br>
 <sec:authorize access="isAuthenticated()">
@@ -23,6 +25,6 @@ user email: ${user.email}
 user role: ${user.role.name}
     <br>
 </sec:authorize>
-<%@ include file="menu.jsp" %>
+
 </body>
 </html>
