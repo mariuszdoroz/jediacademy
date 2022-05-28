@@ -1,8 +1,5 @@
 dashboard:
-<a href="/">welcome</a>
 <a href="/dashboard">dashboard</a>
-<a href="/register">register</a>
-<a href="/login">login</a>
 <a href="/logout">logout</a>
 <a href="/data">example data</a>
 <br>

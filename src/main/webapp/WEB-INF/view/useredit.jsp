@@ -11,14 +11,15 @@
 <body>
 <%@ include file="menu.jsp" %>
 <br>
-<h1>Join Academy - Registration!</h1>
+<h1>Edit User!</h1>
 <br>
 <form:form method="post"
-           modelAttribute="user" action="/register">
+           modelAttribute="user" action="/dashboard/user/edit">
+    <form:hidden path="id"/>
     User Name: <form:input type="text" path="username" /><br>
-    Email: <form:input type="email" path="email" /><br>
-    Password: <form:input type="password" path="password" /><br>
-    <input type="submit" value="register"><br>
+    Email: <form:input type="email" path="email"/><br>
+    Password: <form:input type="password" path="password" value=" " /><br>
+    <input type="submit" value="update"><br>
 </form:form>
 </body>
 </html>

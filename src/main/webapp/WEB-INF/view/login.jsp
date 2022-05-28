@@ -11,7 +11,6 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
 <body>
-<%@ include file="menu.jsp" %>
 <br>
 <div class="container">
     <form class="form-signin" method="post" action="/login">
@@ -26,6 +25,7 @@
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
+        <a href="/register">register</a>
 </div>
 <br>
 </body></html>
