@@ -11,9 +11,6 @@ import pl.jediacademy.repository.RoleRepository;
 import pl.jediacademy.repository.TierRepository;
 import pl.jediacademy.repository.UserRepository;
 
-import java.security.Principal;
-
-
 @Controller
 @RequestMapping
 public class HomeController {

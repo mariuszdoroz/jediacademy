@@ -18,7 +18,7 @@
     <form:hidden path="id"/>
     User Name: <form:input type="text" path="username" /><br>
     Email: <form:input type="email" path="email"/><br>
-    Password: <form:input type="password" path="password" value=" " /><br>
+    New password: <form:input type="password" path="password" /><br>
     <input type="submit" value="update"><br>
 </form:form>
 </body>

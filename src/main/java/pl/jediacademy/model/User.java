@@ -1,10 +1,7 @@
 package pl.jediacademy.model;
 
 import lombok.Data;
-import org.apache.tomcat.jni.Address;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,6 +12,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String username;
     private String password;
     private String email;
@@ -30,4 +29,6 @@ public class User {
     @JoinColumn(name = "tier_id")
     private Tier tier;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Achievement> achievements;
 }

@@ -19,15 +19,17 @@ public class DataController {
     private SubjectRepository subjectRepository;
     private QuestionRepository questionRepository;
     private QuizRepository quizRepository;
+    private AchievementRepository achievementRepository;
 
 
-    public DataController(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository) {
+    public DataController(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.tierRepository = tierRepository;
         this.subjectRepository = subjectRepository;
         this.questionRepository = questionRepository;
         this.quizRepository = quizRepository;
+        this.achievementRepository = achievementRepository;
     }
 
 
@@ -41,6 +43,15 @@ public class DataController {
         Role role2 = new Role();
         role2.setName("ADMIN");
         roleRepository.save(role2);
+        //Achivment
+        Achievement achievement1 = new Achievement();
+        achievement1.setName("Moc silną w tobie czuję");
+        achievement1.setImg("https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/438640/b18058fbd486fa44ca3a6a5bc46b12daa2967fd8.jpg");
+        achievementRepository.save(achievement1);
+        Achievement achievement2 = new Achievement();
+        achievement2.setName("Chewie, jesteśmy w domu");
+        achievement2.setImg("https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/438640/4f58771bd5f6c540e7ca281d5a945022dfb26841.jpg");
+        achievementRepository.save(achievement2);
         //Tier
         tierRepository.saveAll(Arrays.asList(new Tier("JEDI",100L), new Tier("RANGER", 75L), new Tier("PADAWAN", 50L)));
         //Subject

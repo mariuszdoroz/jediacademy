@@ -20,13 +20,12 @@
     <th>answer</th>
     </thead>
     <tbody>
-    <c:forEach items="${questionList}" var="item">
 <tr>
-    <td><c:out value="${item.question}"/></td>
-    <td><c:out value="${item.answer}"/></td>
+    <td>${question.question}</td>
+    <td>${question.answer}</td>
 </tr>
-</c:forEach>
     </tbody>
 </table>
+<a href="/dashboard/learn/1/${questionid}">next</a>
 </body>
 </html>

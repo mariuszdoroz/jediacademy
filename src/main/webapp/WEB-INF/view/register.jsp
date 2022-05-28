@@ -9,8 +9,6 @@
 </head>
 
 <body>
-<%@ include file="menu.jsp" %>
-<br>
 <h1>Join Academy - Registration!</h1>
 <br>
 <form:form method="post"
