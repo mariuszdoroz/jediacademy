@@ -11,6 +11,10 @@ import pl.jediacademy.repository.RoleRepository;
 import pl.jediacademy.repository.TierRepository;
 import pl.jediacademy.repository.UserRepository;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping
 public class HomeController {
