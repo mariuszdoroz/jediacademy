@@ -24,6 +24,10 @@ Jedi Details!
     <br>
     user role: ${user.role.name}
     <br>
+    <c:forEach items="${user.achievements}" var="achi">
+        <img src="${achi.img}" title="${achi.name}">
+    </c:forEach>
+    <br>
 </sec:authorize>
 
 </body>
