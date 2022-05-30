@@ -1,56 +1,51 @@
 package pl.jediacademy.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.jediacademy.model.User;
-import pl.jediacademy.repository.UserRepository;
+import pl.jediacademy.service.QuizService;
+import pl.jediacademy.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 @Controller
 @RequestMapping("/dashboard")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserService userService;
+    private final QuizService quizService;
+
+    public UserController(UserService userService, QuizService quizService) {
+        this.userService = userService;
+        this.quizService = quizService;
+    }
 
     @GetMapping()
-    public String dashboard(){
+    public String dashboard(HttpSession httpSession, HttpServletRequest httpServletRequest){
+        httpSession.setAttribute("quizcount", quizService.countQuiz());
         return "dashboard";
     }
 
     @GetMapping("/user/details")
     public String details(Model model, Principal principal){
-        String name = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(name));
+        model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "userdetails";
     }
 
     @GetMapping("/user/edit")
     public String userEdit(Model model, Principal principal){
-        String name = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(name));
+        model.addAttribute("user", userService.editUser(principal.getName()));
         return "useredit";
     }
 
     @PostMapping("/user/edit")
     public String registerForm(User user) {
-        User updateUser = userRepository.getUserById(user.getId());
-        updateUser.setUsername(user.getUsername());
-        updateUser.setEmail(user.getEmail());
-        if(user.getPassword().equals(userRepository.getUserById(user.getId()).getPassword())) {
-            user.setPassword(user.getPassword());
-        } else {
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String encodedPassword = passwordEncoder.encode(user.getPassword());
-            updateUser.setPassword(encodedPassword);
-        }
-        userRepository.save(updateUser);
+        userService.update(user);
         return "success";
     }
 }
