@@ -13,7 +13,14 @@ public class Statistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long total;
-    private Long goodanswers;
+    private Boolean rightAnswer;
     private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

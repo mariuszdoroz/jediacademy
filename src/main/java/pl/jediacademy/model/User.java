@@ -1,12 +1,15 @@
 package pl.jediacademy.model;
 
 import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
 @Table
+@ToString
 public class User {
 
     @Id

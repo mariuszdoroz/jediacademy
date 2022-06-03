@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,7 +139,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Total questions count:</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">125</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.questioncount}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fab fa-jedi-order fa-3x text-gray-300"></i>
@@ -159,12 +159,12 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">80%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${sessionScope.effectiveness}%</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                             style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+                                                             style="width: ${sessionScope.effectiveness}%" aria-valuenow="${sessionScope.effectiveness}" aria-valuemin="0"
                                                              aria-valuemax="100"></div>
                                                     </div>
                                                 </div>

@@ -9,7 +9,7 @@
                             <h4>${user.username}</h4>
                             <p class="text-secondary mb-1">${user.tier.tiername}</p>
                             <div class="col-sm-12">
-                                <a class="btn btn-info " target="__blank" href="/dashboard/user/edit">Edit</a>
+                                <a class="btn btn-info " href="/dashboard/user/edit">Edit</a>
                             </div>
                         </div>
                     </div>

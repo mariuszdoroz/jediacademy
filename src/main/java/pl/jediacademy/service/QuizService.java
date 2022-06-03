@@ -1,10 +1,12 @@
 package pl.jediacademy.service;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.jediacademy.model.Question;
 import pl.jediacademy.model.Quiz;
-import pl.jediacademy.model.User;
+import pl.jediacademy.model.Subject;
+import pl.jediacademy.repository.QuestionRepository;
 import pl.jediacademy.repository.QuizRepository;
+import pl.jediacademy.repository.SubjectRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -13,9 +15,13 @@ import java.util.List;
 public class QuizService {
 
     private final QuizRepository quizRepository;
+    private final SubjectRepository subjectRepository;
+    private final QuestionRepository questionRepository;
 
-    public QuizService(QuizRepository quizRepository) {
+    public QuizService(QuizRepository quizRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository) {
         this.quizRepository = quizRepository;
+        this.subjectRepository = subjectRepository;
+        this.questionRepository = questionRepository;
     }
 
     public Quiz getById(Long id) {
@@ -40,6 +46,14 @@ public class QuizService {
 
     public void delete(Long id) {
         quizRepository.deleteById(id);
+    }
+
+    public List<Subject> subjectList() {
+        return subjectRepository.findAll();
+    }
+
+    public List<Question> questionListByQuizId(Long quizid){
+        return questionRepository.findAllByQuiz_Id(quizid);
     }
 
 }

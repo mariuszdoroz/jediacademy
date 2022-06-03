@@ -8,8 +8,14 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Force control</h1>
-            <p class="mb-4">lorem</p>
-            <a href="/add" class="btn btn-success" type="button"><i class="fas fa-cash-register fa-sm"></i> Add </a>
+            <p class="mb-4">The fear of loss is a path to the dark side. Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealousy. The shadow of greed that is. Train yourself to let go of everything you fear to lose.</p>
+            <form:form method="post"
+                       modelAttribute="quiz" action="/dashboard/quiz/add">
+               Quiz Title: <form:input type="text" path="quizname" />
+            <form:select itemValue="id" itemLabel="name" path="subject"
+                         items="${subjects}" />
+            <input class="btn btn-success fa-cash-register fa-sm" type="submit" value="Add new quiz!">
+            </form:form>
             <br>
             <br>
 
@@ -26,7 +32,6 @@
                                 <th style="width: 5%">id</th>
                                 <th style="width: 45%">Title</th>
                                 <th style="width: 10%">Subject</th>
-                                <th style="width: 10%">Questions</th>
                                 <th style="width: 20%">Actions</th>
                             </tr>
                             </thead>
@@ -36,10 +41,9 @@
                                     <td>${elem.id}</td>
                                     <td>${elem.quizname}</td>
                                     <td>${elem.subject.name}</td>
-                                    <td>22</td>
                                     <td>
-                                        <a href="/details" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Details </a>
-                                        <a href="/delete" class="btn btn-danger" type="button"><i class="fas fa-search fa-sm"></i> Delete </a>
+                                        <a href="/dashboard/quiz/details/${elem.id}" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Details </a>
+                                        <a href="/dashboard/quiz/delete/${elem.id}" class="btn btn-danger" type="button"><i class="fas fa-search fa-sm"></i> Delete </a>
                                     </td>
                                 </tr>
                             </c:forEach>

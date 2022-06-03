@@ -18,8 +18,10 @@ public class HomeController {
         this.userService = userService;
     }
 
+
+
     @GetMapping("/")
-    public String home(){
+    public String home() {
         return "redirect:/dashboard";
     }
 

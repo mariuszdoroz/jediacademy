@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import pl.jediacademy.model.*;
 import pl.jediacademy.repository.*;
 
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 
 @Service
 public class DataService {
@@ -17,9 +19,10 @@ public class DataService {
     private QuestionRepository questionRepository;
     private QuizRepository quizRepository;
     private AchievementRepository achievementRepository;
+    private ProgressRepository progressRepository;
 
 
-    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository) {
+    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository, ProgressRepository progressRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.tierRepository = tierRepository;
@@ -27,6 +30,7 @@ public class DataService {
         this.questionRepository = questionRepository;
         this.quizRepository = quizRepository;
         this.achievementRepository = achievementRepository;
+        this.progressRepository = progressRepository;
     }
 
     public void loadData(){
@@ -147,6 +151,7 @@ public class DataService {
         admin.setRole(roleRepository.findRoleByName("ADMIN"));
         admin.setTier(tierRepository.findTierByTiername("PADAWAN"));
         userRepository.save(admin);
-        //comment
+        //progress
+        progressRepository.save(new Progress(2L,1L,new Date(), user,quiz1));
     }
 }
