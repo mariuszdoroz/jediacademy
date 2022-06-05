@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.jediacademy.model.Question;
+import pl.jediacademy.service.AchievementService;
 import pl.jediacademy.service.QuestionService;
 import pl.jediacademy.service.QuizService;
 
@@ -17,10 +18,12 @@ public class LearnController {
 
     private QuizService quizService;
     private QuestionService questionService;
+    private AchievementService achievementService;
 
-    public LearnController(QuizService quizService, QuestionService questionService) {
+    public LearnController(QuizService quizService, QuestionService questionService, AchievementService achievementService) {
         this.quizService = quizService;
         this.questionService = questionService;
+        this.achievementService = achievementService;
     }
 
     @GetMapping("/learn")
@@ -34,7 +37,12 @@ public class LearnController {
         List<Question> questionsList = questionService.findByQuiz(quizid);
         model.addAttribute("quiz", quizService.getById(quizid));
         if(questionid == questionsList.size()) {
-//            questionService.addAchivement(principal);
+            Long achiveBrowse = 1L;
+            if(achievementService.checkachiv(principal, achiveBrowse)) {
+                return "report";
+            }
+            achievementService.addAchivement(principal);
+            model.addAttribute("achiv", achievementService.getAchiveBrowse(achiveBrowse));
             return "report";
         }
         model.addAttribute("question", questionsList.get(Math.toIntExact(questionid)));

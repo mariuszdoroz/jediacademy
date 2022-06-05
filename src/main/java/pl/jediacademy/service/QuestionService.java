@@ -58,16 +58,6 @@ public class QuestionService {
         return questionRepository.countQuestionsByQuiz(quiz);
     }
 
-    public void addAchivement(Principal principal) {
-            User user = userRepository.findByUsername(principal.getName());
-            List<Achievement> newList = user.getAchievements();
-            if(!newList.contains(achievementRepository.getById(1L))) {
-                newList.add(achievementRepository.getById(1L));
-                user.setAchievements(newList);
-                userRepository.save(user);
-            }
-    }
-
     public List<Question> findByQuiz(Long quizid) {
         return questionRepository.findAllByQuiz_Id(quizid);
     }

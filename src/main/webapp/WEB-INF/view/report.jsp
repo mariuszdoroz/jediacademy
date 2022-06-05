@@ -15,8 +15,8 @@
                                 <br><br><br>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Truly wonderful the mind of a child is.</h1>
-                                    <h3></h3>
-                                    <h3></h3>
+                                    <h3>${achiv.name}</h3>
+                                    <h3><img src="${achiv.img}"></h3>
                                     <h3></h3>
                                 </div>
                                 <hr>
