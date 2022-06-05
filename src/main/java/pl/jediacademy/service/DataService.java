@@ -20,9 +20,10 @@ public class DataService {
     private ProgressRepository progressRepository;
     private CommentRepository commentRepository;
     private StatisticRepository statisticRepository;
+    private NotificationRepository notificationRepository;
 
 
-    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository, ProgressRepository progressRepository, CommentRepository commentRepository, StatisticRepository statisticRepository) {
+    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository, ProgressRepository progressRepository, CommentRepository commentRepository, StatisticRepository statisticRepository, NotificationRepository notificationRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.tierRepository = tierRepository;
@@ -33,6 +34,7 @@ public class DataService {
         this.progressRepository = progressRepository;
         this.commentRepository = commentRepository;
         this.statisticRepository = statisticRepository;
+        this.notificationRepository = notificationRepository;
     }
 
     public void loadData(){
@@ -158,5 +160,13 @@ public class DataService {
         progressRepository.save(new Progress(2L,1L,new Date(), user,quiz1));
         commentRepository.saveAll(Arrays.asList(new Comment("Very good", new Date(), user, quiz1), new Comment("Very very good", new Date(), user, quiz1)));
         statisticRepository.saveAll(Arrays.asList(new Statistic(false, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L))));
+        notificationRepository.saveAll(Arrays.asList(
+                new Notification("Patience you must have my young Padawan.", "BAD"),
+                new Notification("Feel the force!", "BAD"),
+                new Notification("Control, control, you must learn control!", "BAD"),
+                new Notification("Powerful you have become, the dark side I sense in you.", "GOOD"),
+                new Notification("Truly wonderful the mind of a child is.", "GOOD"),
+                new Notification("Train yourself to let go of everything you fear to lose.", "GOOD")
+                ));
     }
 }

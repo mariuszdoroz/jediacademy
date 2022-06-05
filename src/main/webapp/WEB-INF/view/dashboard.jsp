@@ -17,11 +17,12 @@
                                                     <h3>A challenge lifelong it is, not to bend fear into anger.</h3>                                    </div>
                                                 <hr>
                                                 <br>
-                                                <a href="/dashboard/quiz/random" class="btn btn-primary btn-user btn-block">Shall We Begin?</a>
+                                                <a href="/dashboard/learn" class="btn btn-primary btn-user btn-block">Shall We Begin?</a>
                                                 <br><br><br>
                                             </div>
                                         </div>
                                     </div>
+<%--                                    ----%>
                                 </div>
                             </div>
 

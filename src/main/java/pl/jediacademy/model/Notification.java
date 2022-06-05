@@ -14,4 +14,14 @@ public class Notification {
     private Long id;
     private String type;
     private String message;
+
+    public Notification(String message, String type) {
+        this.message = message;
+        this.type = type;
+
+    }
+
+    public Notification() {
+
+    }
 }
