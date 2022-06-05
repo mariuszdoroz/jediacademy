@@ -6,4 +6,5 @@ import pl.jediacademy.model.Quiz;
 
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
+
 }

@@ -3,8 +3,6 @@ package pl.jediacademy.service;
 import org.springframework.stereotype.Service;
 import pl.jediacademy.model.*;
 import pl.jediacademy.repository.*;
-
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -20,9 +18,11 @@ public class DataService {
     private QuizRepository quizRepository;
     private AchievementRepository achievementRepository;
     private ProgressRepository progressRepository;
+    private CommentRepository commentRepository;
+    private StatisticRepository statisticRepository;
 
 
-    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository, ProgressRepository progressRepository) {
+    public DataService(UserRepository userRepository, RoleRepository roleRepository, TierRepository tierRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, QuizRepository quizRepository, AchievementRepository achievementRepository, ProgressRepository progressRepository, CommentRepository commentRepository, StatisticRepository statisticRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.tierRepository = tierRepository;
@@ -31,6 +31,8 @@ public class DataService {
         this.quizRepository = quizRepository;
         this.achievementRepository = achievementRepository;
         this.progressRepository = progressRepository;
+        this.commentRepository = commentRepository;
+        this.statisticRepository = statisticRepository;
     }
 
     public void loadData(){
@@ -141,6 +143,7 @@ public class DataService {
         user.setEmail("user@example.com");
         user.setRole(roleRepository.findRoleByName("USER"));
         user.setTier(tierRepository.findTierByTiername("PADAWAN"));
+        user.setAchievements(achievementRepository.findAll());
         userRepository.save(user);
         //username: admin
         //pass: 12345
@@ -153,5 +156,7 @@ public class DataService {
         userRepository.save(admin);
         //progress
         progressRepository.save(new Progress(2L,1L,new Date(), user,quiz1));
+        commentRepository.saveAll(Arrays.asList(new Comment("Very good", new Date(), user, quiz1), new Comment("Very very good", new Date(), user, quiz1)));
+        statisticRepository.saveAll(Arrays.asList(new Statistic(false, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L))));
     }
 }

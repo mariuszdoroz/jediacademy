@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.jediacademy.model.User;
-import pl.jediacademy.service.ProgressService;
-import pl.jediacademy.service.QuestionService;
-import pl.jediacademy.service.QuizService;
-import pl.jediacademy.service.UserService;
+import pl.jediacademy.service.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -22,12 +20,14 @@ public class UserController {
     private QuizService quizService;
     private QuestionService questionService;
     private ProgressService progressService;
+    private CommentService commentService;
 
-    public UserController(UserService userService, QuizService quizService, QuestionService questionService, ProgressService progressService) {
+    public UserController(UserService userService, QuizService quizService, QuestionService questionService, ProgressService progressService, CommentService commentService) {
         this.userService = userService;
         this.quizService = quizService;
         this.questionService = questionService;
         this.progressService = progressService;
+        this.commentService = commentService;
     }
 
     @GetMapping()
@@ -35,6 +35,7 @@ public class UserController {
         httpSession.setAttribute("quizcount", quizService.countQuiz());
         httpSession.setAttribute("questioncount", questionService.countQuestion());
         httpSession.setAttribute("effectiveness", progressService.usereffectiveness(principal.getName()));
+        httpSession.setAttribute("comments", commentService.countAllComments(principal.getName()));
         return "dashboard";
     }
 

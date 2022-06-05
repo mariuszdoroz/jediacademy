@@ -2,9 +2,8 @@ package pl.jediacademy.service;
 
 import org.springframework.stereotype.Service;
 import pl.jediacademy.model.Question;
-import pl.jediacademy.model.Quiz;
 import pl.jediacademy.repository.QuestionRepository;
-
+import pl.jediacademy.repository.QuizRepository;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -12,9 +11,11 @@ import java.util.List;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final QuizRepository quizRepository;
 
-    public QuestionService(QuestionRepository questionRepository) {
+    public QuestionService(QuestionRepository questionRepository, QuizRepository quizRepository) {
         this.questionRepository = questionRepository;
+        this.quizRepository = quizRepository;
     }
 
     public Question getById(Long id) {
@@ -29,7 +30,8 @@ public class QuestionService {
         return questionRepository.count();
     }
 
-    public void save(Question question) {
+    public void save(Long quizid, Question question) {
+        question.setQuiz(quizRepository.getById(quizid));
         questionRepository.save(question);
     }
 

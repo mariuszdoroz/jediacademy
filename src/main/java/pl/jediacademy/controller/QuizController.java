@@ -43,7 +43,18 @@ public class QuizController {
     }
 
     @GetMapping("/quiz/delete/{quizid}")
-    public String deleteQuiz(@PathVariable Long quizid) {
+    public String deleteQuiz(Model model, @PathVariable Long quizid) {
+        if (quizService.questionListByQuizId(quizid).size() > 0) {
+            model.addAttribute("quizid", quizid);
+            return "quizconfirmdelete";
+        } else {
+            quizService.delete(quizid);
+            return "redirect:/dashboard/quiz";
+        }
+    }
+
+    @GetMapping("/quiz/confirmdel/{quizid}")
+    public String confirmQuizDelete(@PathVariable Long quizid) {
         quizService.delete(quizid);
         return "redirect:/dashboard/quiz";
     }
@@ -56,9 +67,15 @@ public class QuizController {
         return "quizdetails";
     }
 
-    @PostMapping("/quiz/question/add")
-    public String addQuiz(Question question) {
-        questionService.save(question);
-        return "redirect:/quiz/details/"+question.getQuiz().getId();
+    @GetMapping("/quiz/{quizid}/question/delete/{questionid}")
+    public String detailsQuiz(@PathVariable Long quizid, @PathVariable Long questionid) {
+        questionService.delete(questionid);
+        return "redirect:/dashboard/quiz/details/"+quizid;
+    }
+
+    @PostMapping("/quiz/details/{quizid}")
+    public String addQuiz(Question question, @PathVariable Long quizid) {
+        questionService.save(quizid, question);
+        return "redirect:/dashboard/quiz/details/"+quizid;
     }
 }

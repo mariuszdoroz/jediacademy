@@ -6,7 +6,6 @@ import pl.jediacademy.model.User;
 import pl.jediacademy.repository.RoleRepository;
 import pl.jediacademy.repository.TierRepository;
 import pl.jediacademy.repository.UserRepository;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -68,7 +67,4 @@ public class UserService {
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
-
-
-
 }

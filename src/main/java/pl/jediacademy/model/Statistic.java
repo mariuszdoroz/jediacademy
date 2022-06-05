@@ -23,4 +23,15 @@ public class Statistic {
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
+
+    public Statistic(Boolean rightAnswer, Date date, User user, Question question) {
+        this.rightAnswer = rightAnswer;
+        this.date = date;
+        this.user = user;
+        this.question = question;
+    }
+
+    public Statistic() {
+
+    }
 }

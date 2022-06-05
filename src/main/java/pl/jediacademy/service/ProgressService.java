@@ -28,9 +28,11 @@ public class ProgressService {
         logger.info(String.valueOf(userid));
         List<Progress> progress = progressRepository.findAllByUserId(userid);
         Double effe = 0.00;
-        effe = progress.stream()
-                .mapToDouble(e -> e.getGoodanswers()/Double.valueOf(e.getTotal()))
-                .average().getAsDouble();
+        if(progress.size() > 0) {
+            effe = progress.stream()
+                    .mapToDouble(e -> e.getGoodanswers()/Double.valueOf(e.getTotal()))
+                    .average().getAsDouble();
+        }
         NumberFormat nf = NumberFormat.getInstance();
         nf.setMaximumFractionDigits(0);
         return nf.format(effe*100);

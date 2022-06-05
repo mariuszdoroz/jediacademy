@@ -23,4 +23,15 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
+
+    public Comment(String content, Date date, User user, Quiz quiz) {
+        this.content = content;
+        this.date = date;
+        this.user = user;
+        this.quiz = quiz;
+    }
+
+    public Comment() {
+
+    }
 }

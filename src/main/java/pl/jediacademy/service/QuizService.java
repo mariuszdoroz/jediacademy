@@ -7,8 +7,8 @@ import pl.jediacademy.model.Subject;
 import pl.jediacademy.repository.QuestionRepository;
 import pl.jediacademy.repository.QuizRepository;
 import pl.jediacademy.repository.SubjectRepository;
-
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,7 +53,9 @@ public class QuizService {
     }
 
     public List<Question> questionListByQuizId(Long quizid){
-        return questionRepository.findAllByQuiz_Id(quizid);
+        List<Question> questionList = new ArrayList<>();
+        questionList = questionRepository.findAllByQuiz_Id(quizid);
+        return questionList;
     }
 
 }

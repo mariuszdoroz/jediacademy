@@ -25,8 +25,14 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Progress> progresses;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Statistic> statistics;
 
     @ManyToOne
     @JoinColumn(name = "tier_id")
@@ -34,4 +40,5 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Achievement> achievements;
+
 }
