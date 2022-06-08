@@ -43,7 +43,7 @@
                                     <td>${elem.quizname}</td>
                                     <td>${elem.subject.name}</td>
                                     <td>
-                                        <a href="/dashboard/quiz/comments/${elem.id}" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Comments </a>
+                                        <a href="/dashboard/comments/${elem.id}" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Comments </a>
                                     </td>
                                     <td>
                                         <a href="/dashboard/quiz/details/${elem.id}" class="btn btn-warning" type="button"><i class="fas fa-search fa-sm"></i> Details </a>

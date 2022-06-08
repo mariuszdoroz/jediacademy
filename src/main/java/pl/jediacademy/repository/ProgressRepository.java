@@ -13,7 +13,7 @@ public interface ProgressRepository extends JpaRepository<Progress,Long> {
 
     List<Progress> findAllByUserId(Long userid);
 
-//    @Query("SELECT ROUND((SELECT SUM(goodanswers) FROM progress WHERE user_id= :userid)/(SELECT SUM(total) FROM progress WHERE user_id= :userid)*100)")
-//    Long usereffectiveness(@Param("userid") Long userid);
+//    @Query(value = "SELECT ((SELECT SUM(goodanswers) FROM progress WHERE user_id= :userid and quiz_id= :quizid)/(SELECT SUM(total) FROM progress WHERE user_id= :userid  and quiz_id= :quizid))*100", nativeQuery = true)
+//    Long quizEffectivenessByUser(@Param("userid") Long userid, @Param("quizid") Long quizid);
 
 }

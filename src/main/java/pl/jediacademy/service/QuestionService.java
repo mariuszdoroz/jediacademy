@@ -1,17 +1,12 @@
 package pl.jediacademy.service;
 
 import org.springframework.stereotype.Service;
-import pl.jediacademy.model.Achievement;
-import pl.jediacademy.model.Question;
-import pl.jediacademy.model.Quiz;
-import pl.jediacademy.model.User;
-import pl.jediacademy.repository.AchievementRepository;
-import pl.jediacademy.repository.QuestionRepository;
-import pl.jediacademy.repository.QuizRepository;
-import pl.jediacademy.repository.UserRepository;
+import pl.jediacademy.model.*;
+import pl.jediacademy.repository.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Service
@@ -21,12 +16,16 @@ public class QuestionService {
     private final QuizRepository quizRepository;
     private final UserRepository userRepository;
     private final AchievementRepository achievementRepository;
+    private final StatisticRepository statisticRepository;
+    private final UserService userService;
 
-    public QuestionService(QuestionRepository questionRepository, QuizRepository quizRepository, UserRepository userRepository, AchievementRepository achievementRepository) {
+    public QuestionService(QuestionRepository questionRepository, QuizRepository quizRepository, UserRepository userRepository, AchievementRepository achievementRepository, StatisticRepository statisticRepository, UserService userService) {
         this.questionRepository = questionRepository;
         this.quizRepository = quizRepository;
         this.userRepository = userRepository;
         this.achievementRepository = achievementRepository;
+        this.statisticRepository = statisticRepository;
+        this.userService = userService;
     }
 
     public Question getById(Long id) {
@@ -60,5 +59,27 @@ public class QuestionService {
 
     public List<Question> findByQuiz(Long quizid) {
         return questionRepository.findAllByQuiz_Id(quizid);
+    }
+
+    public Double questionEffe(Principal principal, Long questionid) {
+        Long userid = userService.findByUsername(principal.getName()).getId();
+        List<Statistic> statisticList= statisticRepository.findAllByQuestionIdUserId(userid, questionid);
+        Double effe = 0.00;
+        int score = 0;
+        if(statisticList.size() >0) {
+            if(statisticList.size() > 0) { //piwo za zrobienie tego jako stream
+                for (int i = 0; i < statisticList.size(); i++) { //+1?
+                    if (statisticList.get(i).getRightAnswer()) {
+                        score += 10;
+                    }
+                }
+            }
+            effe = Double.valueOf(score / statisticList.size());
+        } else {
+            effe = 0.5;
+        }
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(2);
+        return Double.valueOf(nf.format(effe*10));
     }
 }

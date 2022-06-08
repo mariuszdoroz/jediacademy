@@ -26,7 +26,7 @@
                                 <th style="width: 5%">id</th>
                                 <th style="width: 20%">Title</th>
                                 <th style="width: 10%">Subject</th>
-                                <th style="width: 15%">Effectiveness</th>
+                                <th style="width: 15%">Last Effectiveness</th>
                                 <th style="width: 50%">Actions</th>
                             </tr>
                             </thead>
@@ -37,12 +37,12 @@
                                     <td>${elem.quizname}</td>
                                     <td>${elem.subject.name}</td>
                                     <td>
-                                        <a href="/dashboard/learn/${elem.id}/statistic" class="btn btn-danger" type="button"><i class="fas fa-search fa-sm"></i> wiem co nie wiem jak </a>
+                                        <a href="/dashboard/learn/${elem.id}/statistic" class="btn btn-danger" type="button"><i class="fas fa-search fa-sm"></i> Statistics </a>
                                     </td>
                                     <td>
                                         <a href="/dashboard/learn/${elem.id}/browse/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Browse </a>
-                                        <a href="/dashboard/learn/${elem.id}/know/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Know?</a>
-                                        <a href="/dashboard/learn/${elem.id}/write/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Write </a>
+<%--                                        <a href="/dashboard/learn/${elem.id}/know/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Know?</a>--%>
+<%--                                        <a href="/dashboard/learn/${elem.id}/write/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Write </a>--%>
                                         <a href="/dashboard/learn/${elem.id}/quiz/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Quiz </a>
                                         <a href="/dashboard/learn/${elem.id}/jedi/0" class="btn btn-success" type="button"><i class="fas fa-search fa-sm"></i> Jedi </a>
                                     </td>

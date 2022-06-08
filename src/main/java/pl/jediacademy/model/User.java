@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @Entity
 @Table
-@ToString
 public class User {
 
     @Id

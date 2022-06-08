@@ -1,5 +1,6 @@
 package pl.jediacademy.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table
+@AllArgsConstructor
 public class Comment {
 
     @Id
@@ -24,14 +26,8 @@ public class Comment {
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    public Comment(String content, Date date, User user, Quiz quiz) {
-        this.content = content;
-        this.date = date;
-        this.user = user;
-        this.quiz = quiz;
-    }
+
 
     public Comment() {
-
     }
 }

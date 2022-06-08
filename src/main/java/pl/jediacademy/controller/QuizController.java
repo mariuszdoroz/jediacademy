@@ -1,11 +1,14 @@
 package pl.jediacademy.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.jediacademy.model.Question;
 import pl.jediacademy.model.Quiz;
 import pl.jediacademy.model.Subject;
+import pl.jediacademy.service.ProgressService;
 import pl.jediacademy.service.QuestionService;
 import pl.jediacademy.service.QuizService;
 
@@ -15,12 +18,16 @@ import java.util.Collection;
 @RequestMapping("/dashboard")
 public class QuizController {
 
+    private static final Logger logger = LoggerFactory.getLogger((QuizController.class));
+
     public final QuizService quizService;
     public final QuestionService questionService;
+    public final ProgressService progressService;
 
-    public QuizController(QuizService quizService, QuestionService questionService) {
+    public QuizController(QuizService quizService, QuestionService questionService, ProgressService progressService) {
         this.quizService = quizService;
         this.questionService = questionService;
+        this.progressService = progressService;
     }
 
 

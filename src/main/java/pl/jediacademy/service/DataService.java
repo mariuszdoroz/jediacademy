@@ -158,8 +158,19 @@ public class DataService {
         userRepository.save(admin);
         //progress
         progressRepository.save(new Progress(2L,1L,new Date(), user,quiz1));
-        commentRepository.saveAll(Arrays.asList(new Comment("Very good", new Date(), user, quiz1), new Comment("Very very good", new Date(), user, quiz1)));
-        statisticRepository.saveAll(Arrays.asList(new Statistic(false, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L)), new Statistic(true, new Date(), user, questionRepository.getById(1L))));
+        commentRepository.saveAll(Arrays.asList(new Comment(1L, "Very good", new Date(), user, quiz1), new Comment(2L, "Very very good", new Date(), user, quiz1)));
+        statisticRepository.saveAll(Arrays.asList(
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
+                new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1)));
         notificationRepository.saveAll(Arrays.asList(
                 new Notification("Patience you must have my young Padawan.", "BAD"),
                 new Notification("Feel the force!", "BAD"),
