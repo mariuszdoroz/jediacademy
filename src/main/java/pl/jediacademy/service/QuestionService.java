@@ -65,8 +65,8 @@ public class QuestionService {
         Long userid = userService.findByUsername(principal.getName()).getId();
         List<Statistic> statisticList= statisticRepository.findAllByQuestionIdUserId(userid, questionid);
         Double effe = 0.00;
-        int score = 0;
-        if(statisticList.size() >0) {
+        Double score = 0.00;
+        if(statisticList.size() > 0) {
             if(statisticList.size() > 0) { //piwo za zrobienie tego jako stream
                 for (int i = 0; i < statisticList.size(); i++) { //+1?
                     if (statisticList.get(i).getRightAnswer()) {
@@ -74,7 +74,7 @@ public class QuestionService {
                     }
                 }
             }
-            effe = Double.valueOf(score / statisticList.size());
+            effe = score / statisticList.size();
         } else {
             effe = 0.5;
         }

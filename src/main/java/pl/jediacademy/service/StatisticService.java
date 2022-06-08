@@ -39,7 +39,7 @@ public class StatisticService {
         statisticRepository.save(qStat);
     }
 
-    public Long goodanswersCount(int size, Long quizid, Long userid) {
+    public Long goodanswersCount(Long size, Long quizid, Long userid) {
         List<Statistic> lastQuizStat = statisticRepository.lastQuizAnswers(size, quizid, userid);
         Long goodAnswers = 0L;
         for (Statistic q : lastQuizStat) {

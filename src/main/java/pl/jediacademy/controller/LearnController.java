@@ -5,11 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.jediacademy.model.Progress;
 import pl.jediacademy.model.Question;
+import pl.jediacademy.model.Quiz;
+import pl.jediacademy.model.User;
 import pl.jediacademy.service.*;
 
 import java.security.Principal;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +29,15 @@ public class LearnController {
     private AchievementService achievementService;
     private StatisticService statisticService;
     private ProgressService progressService;
+    private UserService userService;
 
-    public LearnController(QuizService quizService, QuestionService questionService, AchievementService achievementService, StatisticService statisticService, ProgressService progressService) {
+    public LearnController(QuizService quizService, QuestionService questionService, AchievementService achievementService, StatisticService statisticService, ProgressService progressService, UserService userService) {
         this.quizService = quizService;
         this.questionService = questionService;
         this.achievementService = achievementService;
         this.statisticService = statisticService;
         this.progressService = progressService;
+        this.userService = userService;
     }
 
     @GetMapping("/learn")
@@ -67,10 +73,19 @@ public class LearnController {
     @GetMapping("/learn/{quizid}/quiz/{questionid}")
     public String quizGet(Model model, @PathVariable Long quizid, @PathVariable Long questionid, Principal principal) {
         List<Question> questionsList = questionService.findByQuiz(quizid);
-        model.addAttribute("quiz", quizService.getById(quizid));
+        Quiz quiz = quizService.getById(quizid);
+        Long questionsListSize = Long.valueOf(questionsList.size());
+        model.addAttribute("quiz", quiz);
         if (questionid == questionsList.size()) {
             Long achiveBrowse = 2L;
-            progressService.save(questionsList.size(), quizid, principal);
+            Progress qProgress = new Progress();
+            qProgress.setDate(new Date());
+            qProgress.setQuiz(quiz);
+            qProgress.setTotal(questionsListSize);
+            User user = userService.findByUsername(principal.getName());
+            qProgress.setUser(user);
+            qProgress.setGoodanswers(statisticService.goodanswersCount(questionsListSize, quiz.getId(), user.getId()));
+            progressService.save(qProgress);
             if (achievementService.checkachiv(principal, achiveBrowse)) {
                 return "report";
             }

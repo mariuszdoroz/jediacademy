@@ -17,15 +17,11 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final SubjectRepository subjectRepository;
     private final QuestionRepository questionRepository;
-    private final ProgressService progressService;
-    private final UserService userService;
 
-    public QuizService(QuizRepository quizRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository, ProgressService progressService, UserService userService) {
+    public QuizService(QuizRepository quizRepository, SubjectRepository subjectRepository, QuestionRepository questionRepository) {
         this.quizRepository = quizRepository;
         this.subjectRepository = subjectRepository;
         this.questionRepository = questionRepository;
-        this.progressService = progressService;
-        this.userService = userService;
     }
 
     public Quiz getById(Long id) {
@@ -61,16 +57,5 @@ public class QuizService {
         questionList = questionRepository.findAllByQuiz_Id(quizid);
         return questionList;
     }
-
-//    public Map<Quiz, String> mapAllEffe(Principal principal) {
-//
-//        Map<Quiz, String> quizMapEffe = new TreeMap<>();
-//        List<Quiz> quizList = quizRepository.findAll();
-//        for (int i = 0; i < quizList.size(); i++) {
-//            quizMapEffe.put(quizList.get(i), progressService.quizEffectivenessByUser(userService.findByUsername(principal.getName()).getId(), quizList.get(i).getId()));
-//        }
-//        return quizMapEffe;
-//    }
-
 
 }

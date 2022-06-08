@@ -157,7 +157,7 @@ public class DataService {
         admin.setTier(tierRepository.findTierByTiername("PADAWAN"));
         userRepository.save(admin);
         //progress
-        progressRepository.save(new Progress(2L,1L,new Date(), user,quiz1));
+        progressRepository.save(new Progress(7L,5L,new Date(), user,quiz2));
         commentRepository.saveAll(Arrays.asList(new Comment(1L, "Very good", new Date(), user, quiz1), new Comment(2L, "Very very good", new Date(), user, quiz1)));
         statisticRepository.saveAll(Arrays.asList(
                 new Statistic(true, new Date(), user, questionRepository.getById(47L), quiz1),
