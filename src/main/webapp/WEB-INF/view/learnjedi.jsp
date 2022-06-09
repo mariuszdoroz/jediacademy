@@ -16,7 +16,15 @@
                                     <h3>???</h3>
                                     <form:form>
                                         <c:forEach items="${answer}" var="elem">
-                                            <h3>${elem.answer}</h3>
+                                            <c:choose>
+                                                <c:when test="${elem.answer eq question.answer}">
+                                                    <h1>${elem.answer}</h1>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <h3>${elem.answer}</h3>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <br>
                                         </c:forEach>
                                     </form:form>
 
