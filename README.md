@@ -1,4 +1,4 @@
-# Króko o projekcie:
+# Krótko o projekcie:
 aplikacja webowa która pozwala na przyswajanie wiedzy systemem nauki z fiszkami
 
 # metody nauki:
