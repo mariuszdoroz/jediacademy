@@ -47,7 +47,7 @@ public class StatisticService {
         List<Statistic> lastQuizStat = statisticRepository.lastQuizAnswers(size, quizid, userid);
         Long goodAnswers = 0L;
         for (Statistic q : lastQuizStat) {
-            if(q.getRightAnswer()==true) {
+            if(q.getRightAnswer()) {
                 goodAnswers +=1;
             }
         }
@@ -60,19 +60,14 @@ public class StatisticService {
         List<Question> questionList = quizService.questionListByQuizId(quizid);
         for (int i = 0; i < questionList.size(); i++) {
             List<Statistic> lastQuizStat = statisticRepository.questionAnswers(quizid, userid, questionList.get(i).getId());
-            Double effe = 0.00;
-            Double goodAnswers = 0.00;
-            for (Statistic q : lastQuizStat) {
-                if(q.getRightAnswer()==true) {
-                    goodAnswers +=100.00;
-                }
-            }
+            long goodAnswers = lastQuizStat.stream()
+                    .filter(Statistic::getRightAnswer)
+                    .count();
             NumberFormat nf = NumberFormat.getInstance();
             nf.setMaximumFractionDigits(0);
-            effe = goodAnswers/lastQuizStat.size();
+            Double effe = (double) goodAnswers/lastQuizStat.size()*100;
             questionStatList.add(new QuestionStat(questionList.get(i), nf.format(effe)));
         }
         return questionStatList;
     }
-
 }

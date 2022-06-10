@@ -22,10 +22,24 @@
                 </div>
             </div>
             <br>
-            <a href="javascript:history.back()" class="btn btn-dark" type="button"><i class="fas fa-search fa-sm"></i> Back </a>
+            <a href="javascript:history.back()" class="btn btn-dark" type="button"><i class="fas fa-search fa-sm"></i>
+                Back </a>
             <br>
+            <sec:authorize access="hasAuthority('ADMIN')">
+            <div>
+                <label for="userselect">Choose user:</label>
+                <form method="post">
+                <select name="userselect" id="userselect">
+                    <option value="">--Please choose an option--</option>
+                    <c:forEach items="${userlist}" var="userelem">
+                        <option value="${userelem.username}">${userelem.username}</option>
+                    </c:forEach>
+                </select>
+                <input type="submit" value="schow">
+                </form>
+            </div>
+            </sec:authorize>
             <br>
-
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -56,7 +70,8 @@
                                             <div class="col">
                                                 <div class="progress progress-sm mr-2">
                                                     <div class="progress-bar bg-info" role="progressbar"
-                                                         style="width: ${elem.effe}%" aria-valuenow="${elem.effe}" aria-valuemin="0"
+                                                         style="width: ${elem.effe}%" aria-valuenow="${elem.effe}"
+                                                         aria-valuemin="0"
                                                          aria-valuemax="100"></div>
                                                 </div>
                                             </div>
