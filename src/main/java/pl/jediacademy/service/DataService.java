@@ -63,6 +63,7 @@ public class DataService {
         quizRepository.save(new Quiz("Stolice Państw!", subjectRepository.findByName("Geography")));
         quizRepository.save(new Quiz("Dni tygodnia!", subjectRepository.findByName("English")));
         quizRepository.save(new Quiz("Miesiące!", subjectRepository.findByName("English")));
+        quizRepository.save(new Quiz("Rodzina!", subjectRepository.findByName("English")));
         //Questions
         Quiz quiz1 = quizRepository.findById(1L).get();
         questionRepository.saveAll(Arrays.asList(
@@ -136,6 +137,17 @@ public class DataService {
                 new Question("Październik", "October", quiz3),
                 new Question("Listopad", "November", quiz3),
                 new Question("Grudzień", "December", quiz3)
+        ));
+        Quiz quiz4 = quizRepository.findById(4L).get();
+        questionRepository.saveAll(Arrays.asList(
+                new Question("Mama", "Mum", quiz4),
+                new Question("Tata", "Dad", quiz4),
+                new Question("Brat", "Brother", quiz4),
+                new Question("Siostra", "Sister", quiz4),
+                new Question("Ciocia", "Aunt", quiz4),
+                new Question("Wujek", "Uncle", quiz4),
+                new Question("Babcia", "Grandma", quiz4),
+                new Question("Dziadek", "Grapma", quiz4)
         ));
         //username: user
         //pass: 12345
