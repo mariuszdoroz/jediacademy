@@ -19,7 +19,7 @@
                                     <c:forEach items="${answer}" var="elem">
                                         <label>
                                             <input type="radio" name="answerid" id="answerid"
-                                                   value="${elem.id}"/>${elem.answer}
+                                                   value="${elem.id}" required/>${elem.answer}
                                         </label>
                                         <br>
                                     </c:forEach>

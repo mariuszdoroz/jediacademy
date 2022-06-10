@@ -30,14 +30,16 @@ public class LearnController {
     private StatisticService statisticService;
     private ProgressService progressService;
     private UserService userService;
+    private NotificationService notificationService;
 
-    public LearnController(QuizService quizService, QuestionService questionService, AchievementService achievementService, StatisticService statisticService, ProgressService progressService, UserService userService) {
+    public LearnController(QuizService quizService, QuestionService questionService, AchievementService achievementService, StatisticService statisticService, ProgressService progressService, UserService userService, NotificationService notificationService) {
         this.quizService = quizService;
         this.questionService = questionService;
         this.achievementService = achievementService;
         this.statisticService = statisticService;
         this.progressService = progressService;
         this.userService = userService;
+        this.notificationService = notificationService;
     }
 
     @GetMapping("/learn")
@@ -87,9 +89,13 @@ public class LearnController {
             qProgress.setGoodanswers(statisticService.goodanswersCount(questionsListSize, quiz.getId(), user.getId()));
             progressService.save(qProgress);
             if (achievementService.checkachiv(principal, achiveBrowse)) {
+                model.addAttribute("progress", qProgress);
+                model.addAttribute("notification", notificationService.scoreNotification());
                 return "report";
             }
             achievementService.addAchivement(principal);
+            model.addAttribute("progress", qProgress);
+            model.addAttribute("notification", notificationService.scoreNotification());
             model.addAttribute("achiv", achievementService.getAchiveBrowse(achiveBrowse));
             return "report";
         }

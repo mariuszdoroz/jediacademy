@@ -12,12 +12,24 @@
                         <div class="col-lg-6 d-none d-lg-block bg-browse-image"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
+                                <script>
+                                    function showAnswer() {
+                                        var x = document.getElementById("myDIV");
+                                        if (x.style.display === "none") {
+                                            x.style.display = "block";
+                                        } else {
+                                            x.style.display = "none";
+                                        }
+                                    }
+                                </script>
                                 <br><br><br>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">${quiz.quizname}</h1>
                                     <h3>${question.quest}</h3>
-                                    <h3>???</h3>
-                                    <h3>${question.answer}</h3>
+                                    <button onclick="showAnswer()">Answer?</button>
+                                    <div id="myDIV" style="display: none">
+                                        <h3>${question.answer}</h3>
+                                    </div>
                                 </div>
                                 <hr>
                                 <br>

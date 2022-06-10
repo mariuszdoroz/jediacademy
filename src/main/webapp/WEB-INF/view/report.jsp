@@ -15,6 +15,20 @@
                                 <br><br><br>
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Truly wonderful the mind of a child is.</h1>
+                                    <br>
+                                    <c:choose>
+                                        <c:when test="${progress != null}">
+                                            <br>
+                                            <h3>Score: ${progress.goodanswers}/${progress.total}</h3>
+                                            <br>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <br>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <br>
+                                    <h3>${notification}</h3>
+                                    <br>
                                     <h3>${achiv.name}</h3>
                                     <h3><img src="${achiv.img}"></h3>
                                     <h3></h3>
