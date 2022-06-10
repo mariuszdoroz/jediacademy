@@ -1,11 +1,15 @@
 package pl.jediacademy.service;
 
 import org.springframework.stereotype.Service;
+import pl.jediacademy.model.Question;
+import pl.jediacademy.model.QuestionStat;
 import pl.jediacademy.model.Statistic;
 import pl.jediacademy.model.User;
 import pl.jediacademy.repository.StatisticRepository;
 
 import java.security.Principal;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,4 +53,26 @@ public class StatisticService {
         }
         return goodAnswers;
     }
+
+    public List<QuestionStat> questionAnswers(Long quizid, String username) {
+        Long userid = userService.findByUsername(username).getId();
+        List<QuestionStat> questionStatList= new ArrayList<>();
+        List<Question> questionList = quizService.questionListByQuizId(quizid);
+        for (int i = 0; i < questionList.size(); i++) {
+            List<Statistic> lastQuizStat = statisticRepository.questionAnswers(quizid, userid, questionList.get(i).getId());
+            Double effe = 0.00;
+            Double goodAnswers = 0.00;
+            for (Statistic q : lastQuizStat) {
+                if(q.getRightAnswer()==true) {
+                    goodAnswers +=100.00;
+                }
+            }
+            NumberFormat nf = NumberFormat.getInstance();
+            nf.setMaximumFractionDigits(0);
+            effe = goodAnswers/lastQuizStat.size();
+            questionStatList.add(new QuestionStat(questionList.get(i), nf.format(effe)));
+        }
+        return questionStatList;
+    }
+
 }

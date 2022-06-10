@@ -16,4 +16,7 @@ public interface StatisticRepository extends JpaRepository<Statistic,Long> {
 
     @Query(value = "SELECT * FROM statistic WHERE user_id = :userid and quiz_id = :quizid order by date desc limit :limit", nativeQuery = true)
     List<Statistic> lastQuizAnswers(@Param("limit") Long limit, @Param("quizid") Long quizid, @Param("userid") Long userid);
+
+    @Query(value = "SELECT * FROM statistic WHERE user_id = :userid and quiz_id = :quizid and question_id = :questionid", nativeQuery = true)
+    List<Statistic> questionAnswers(@Param("quizid") Long quizid, @Param("userid") Long userid, @Param("questionid") Long questionid);
 }

@@ -42,6 +42,20 @@ public class ProgressService {
         return nf.format(effe*100);
     }
 
+    public String userquizeffectiveness(String username, Long quizid) {
+        Long userid = userService.findByUsername(username).getId();
+        List<Progress> progress = progressRepository.findAllByQuizIdAndUserId(userid, quizid);
+        Double effe = 0.00;
+        if(progress.size() > 0) {
+            effe = progress.stream()
+                    .mapToDouble(e -> e.getGoodanswers()/Double.valueOf(e.getTotal()))
+                    .average().getAsDouble();
+        }
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(0);
+        return nf.format(effe*100);
+    }
+
     public void save(Progress progress) {
         progressRepository.save(progress);
     }

@@ -32,7 +32,7 @@
                                 <th style="width: 5%">id</th>
                                 <th style="width: 35%">Title</th>
                                 <th style="width: 10%">Subject</th>
-                                <th style="width: 10%">Comments</th>
+<%--                                <th style="width: 10%">Comments</th>--%>
                                 <th style="width: 20%">Actions</th>
                             </tr>
                             </thead>
@@ -42,9 +42,9 @@
                                     <td>${elem.id}</td>
                                     <td>${elem.quizname}</td>
                                     <td>${elem.subject.name}</td>
-                                    <td>
-                                        <a href="/dashboard/comments/${elem.id}" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Comments </a>
-                                    </td>
+<%--                                    <td>--%>
+<%--                                        <a href="/dashboard/comments/${elem.id}" class="btn btn-info" type="button"><i class="fas fa-search fa-sm"></i> Comments </a>--%>
+<%--                                    </td>--%>
                                     <td>
                                         <a href="/dashboard/quiz/details/${elem.id}" class="btn btn-warning" type="button"><i class="fas fa-search fa-sm"></i> Details </a>
                                         <a href="/dashboard/quiz/delete/${elem.id}" class="btn btn-danger" type="button"><i class="fas fa-search fa-sm"></i> Delete </a>

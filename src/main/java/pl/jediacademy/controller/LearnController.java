@@ -44,7 +44,6 @@ public class LearnController {
 
     @GetMapping("/learn")
     public String learn(Model model, Principal principal) {
-//        model.addAttribute("quizList", quizService.mapAllEffe(principal));
         model.addAttribute("quizList", quizService.findAll());
         return "learn";
     }
