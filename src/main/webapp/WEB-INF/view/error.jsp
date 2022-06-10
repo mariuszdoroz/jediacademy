@@ -1,19 +1,38 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Demo | Welcome</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>e
-</head>
+<%@ include file="header.jsp" %>
 
-<body>
-<%@ include file="menu.jsp" %>
-<br>
-Achtung! Error page!
-<br>
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-droids-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Occurred, an error has.</h1>
+                                    <h3>these aren't the droids you're looking for</h3>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                <br>
+                                <a href="javascript:history.back()" class="btn btn-dark" type="button"><i class="fa-solid fa-bug fa-sm"></i> Back </a>
+                                <br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--                                    ----%>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- /.container-fluid -->
+<%@ include file="footer.jsp" %>

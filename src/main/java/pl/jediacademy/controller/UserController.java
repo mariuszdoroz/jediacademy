@@ -35,7 +35,7 @@ public class UserController {
         httpSession.setAttribute("quizcount", quizService.countQuiz());
         httpSession.setAttribute("questioncount", questionService.countQuestion());
         httpSession.setAttribute("effectiveness", progressService.usereffectiveness(principal.getName()));
-        httpSession.setAttribute("comments", commentService.countAllComments(principal.getName()));
+        httpSession.setAttribute("commentscount", commentService.countAllComments(principal.getName()));
         return "dashboard";
     }
 

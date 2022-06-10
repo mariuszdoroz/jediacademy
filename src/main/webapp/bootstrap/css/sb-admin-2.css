@@ -10878,6 +10878,12 @@ a:focus {
   background-size: unset;
 }
 
+.bg-droids-image {
+  background: url("https://starwarsblog.starwars.com/wp-content/uploads/2021/02/20-best-star-wars-droids-TALL.jpg");
+  background-position: center;
+  background-size: unset;
+}
+
 .bg-browse-image {
   background: url("https://p4.wallpaperbetter.com/wallpaper/1007/627/650/star-wars-anakin-skywalker-ahsoka-tano-artwork-wallpaper-preview.jpg");
   background-position: center;
