@@ -54,6 +54,6 @@ public class UserController {
     @PostMapping("/user/edit")
     public String registerForm(User user) {
         userService.update(user);
-        return "success";
+        return "dashboard";
     }
 }
