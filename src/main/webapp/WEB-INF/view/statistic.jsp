@@ -22,7 +22,7 @@
                 </div>
             </div>
             <br>
-            <a href="javascript:history.back()" class="btn btn-dark" type="button"><i class="fas fa-search fa-sm"></i>
+            <a href="/dashboard/learn" class="btn btn-dark" type="button"><i class="fas fa-search fa-sm"></i>
                 Back </a>
             <br>
             <sec:authorize access="hasAuthority('ADMIN')">
