@@ -8,8 +8,9 @@ aplikacja webowa która pozwala na przyswajanie wiedzy systemem nauki z fiszkami
 
 # jak zacząć
 - należy pobrać do siebie repozytorium
-- w application.properties ustawić swoją bazę danych (najlepiej nową)
 - uruchomić aplikację
 - utworzyć nowego użytkownika albo zalogować się już istniejącym
   login: user
+  hasło: 12345
+  login: admin
   hasło: 12345
