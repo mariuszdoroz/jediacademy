@@ -8,7 +8,7 @@ aplikacja webowa która pozwala na przyswajanie wiedzy systemem nauki z fiszkami
 
 # jak zacząć
 - należy pobrać do siebie repozytorium i odpalic
-- uruchomić aplikację przez http://localhost:8060/
+- uruchomić aplikację przez http://localhost:8080/
 - utworzyć nowego użytkownika albo zalogować się już istniejącym
   login: user
   hasło: 12345
